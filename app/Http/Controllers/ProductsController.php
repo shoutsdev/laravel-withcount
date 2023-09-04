@@ -10,7 +10,7 @@ class ProductsController extends Controller
     public function index()
     {
         $categories = Category::select("id", "name")
-            ->withCount([
+            ->withSum([
                 'products as active_products_count' => function ($query) {
                     $query->where('is_active', '1');
                 },
